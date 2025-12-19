@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h2>Todo App</h2>
+
+<form action="/add" method="post">
+    <input type="text" name="title" required />
+    <button>Add</button>
+</form>
+
+<ul>
+    <li th:each="todo : ${todos}">
+        <span th:text="${todo.title}"></span>
+        <a th:href="@{/delete/{id}(id=${todo.id})}">❌</a>
+    </li>
+</ul>
+</body>
+</html>
