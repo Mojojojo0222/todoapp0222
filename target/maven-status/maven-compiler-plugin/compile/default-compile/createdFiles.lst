@@ -1,0 +1,5 @@
+com\todoapp\entity\Todo.class
+com\todoapp\repository\TodoRepository.class
+com\todoapp\controller\TodoController.class
+com\todoapp\TodoappApplication.class
+com\todoapp\service\TodoService.class
