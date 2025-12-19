@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jre
+FROM amazoncorretto:21-alpine
 WORKDIR /app
 COPY target/todoapp-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8082
