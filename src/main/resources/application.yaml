@@ -3,7 +3,7 @@ spring:
     name: todoapp
 
   datasource:
-    url: jdbc:mysql://todoappdb.cpkkykeosln6.ap-south-1.rds.amazonaws.com:3306/todoapp?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://tododb.cpkkykeosln6.ap-south-1.rds.amazonaws.com:3306/todoapp?useSSL=false&allowPublicKeyRetrieval=true
     username: admin
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
