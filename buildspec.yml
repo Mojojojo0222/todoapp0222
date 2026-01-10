@@ -1,16 +1,22 @@
 version: 0.2
 
+env:
+  variables:
+    IMAGE_NAME: todoapp
+    REGION: ap-south-1
+    ACCOUNT_ID: 551614518984
+
 phases:
-  install:
-    runtime-versions:
-      java: corretto21
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
 
   build:
     commands:
-      - mvn clean package -DskipTests
+      - docker build -t $IMAGE_NAME .
 
-artifacts:
-  files:
-    - target/todoapp-0.0.1-SNAPSHOT.jar
-    - Dockerfile
-    - docker-compose.yml
+  post_build:
+    commands:
+      - docker tag $IMAGE_NAME:latest $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_NAME:latest
+      - docker push $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_NAME:latest
+
